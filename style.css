@@ -18,7 +18,7 @@ body {
     pointer-events: none;
     background:
         radial-gradient(
-            circle 300px at var(--x, 50%) var(--y, 50%),
+            circle 400px at var(--x, 50%) var(--y, 50%),
             rgba(56, 189, 248, 0.122),
             transparent 60%
         );
@@ -119,14 +119,52 @@ h2 {
     margin-bottom: 0.25rem;
 }
 
+/* Make each section capable of holding a background overlay */
 .content-section {
-    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0;
+}
+
+/* Ensure all actual content appears above the pattern */
+.content-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Dotted pattern overlay */
+.content-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    /* Creates a subtle dot grid */
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.1) 1px,
+        transparent 1px
+    );
+    background-size: 24px 24px;
 }
 
 .section-subtitle {
     color: #94a3b8;
     font-size: 1rem;
     margin-top: 0.75rem;
+}
+
+.section-img {
+    width: 100%;
+    border-radius: 1rem;
+    opacity: 0.9;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+}
+
+.section-img:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+    opacity: 1;
 }
 
 /* Footer */
