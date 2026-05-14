@@ -25,6 +25,10 @@ body {
     z-index: -1;
 }
 
+.explore {
+    animation: pulse 2s infinite;
+}
+
 /* Hero */
 .hero {
     min-height: 100vh;
